@@ -1,15 +1,33 @@
 # Stripe Payments Integration Demo
 
-This project showcases a demo app for Stripe Payments using Node.js. It focuses on the use of a checkout page with Payment Intents API.
+This project showcases a demo app for Stripe Payments using Node.js. It focuses on the use of a checkout page with the Payment Intents API.
 
-# Key Features & Setup:
+### Key Features & Setup
 
-Language: Built on Node.js using the Express framework for the server 
+* **Language:** Built on Node.js using the Express framework for the server.
+* **Flow:** Implements the recommended Stripe workflow: calculating the order amount on the backend to prevent tampering, and confirming the payment on the frontend.
 
-Flow: Implements the recommended Stripe workflow: calculating the order amount on the backend to prevent tampering, and confirming the payment on the frontend.
+### Installation
 
-Installation: Run npm install in the project root to install the required dependencies 
+Run the following command in the project root to install the required dependencies:
 
-Configuration: Before running, ensure you replace the placeholder API keys in app.js (Secret Key) and views/checkout.hbs (Publishable Key) with your own Stripe test credentials.
+```bash
+npm install
+```
 
-How to Run: Start the application by running node app.js, then navigate to http://localhost:3000 in your browser to view the demo.
+### Configuration
+
+Before running, ensure you replace the placeholder API keys with your own Stripe test credentials:
+
+1.  **Secret Key:** Update the key in `app.js`.
+2.  **Publishable Key:** Update the key in `views/checkout.hbs`.
+
+### How to Run
+
+Start the application by running:
+
+```bash
+node app.js
+```
+
+Then navigate to `http://localhost:3000` in your browser to view the demo.
