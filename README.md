@@ -1,29 +1,15 @@
-# Take home project
-This is a simple e-commerce application that a customer can use to purchase a book, but it's missing the payments functionality —  your goal is to integrate Stripe to get this application running!
+# Stripe Payments Integration Demo
 
-## Candidate instructions
-You'll receive these in email.
+This project showcases a demo app for Stripe Payments using Node.js. It focuses on the use of a checkout page with Payment Intents API.
 
-## Application overview
-This demo is written in Javascript (Node.js) with the [Express framework](https://expressjs.com/). You'll need to retrieve a set of testmode API keys from the Stripe dashboard (you can create a free test account [here](https://dashboard.stripe.com/register)) to run this locally.
+# Key Features & Setup:
 
-We're using the [Bootstrap](https://getbootstrap.com/docs/4.6/getting-started/introduction/) CSS framework. It's the most popular CSS framework in the world and is pretty easy to get started with — feel free to modify styles/layout if you like. 
+Language: Built on Node.js using the Express framework for the server 
 
-To simplify this project, we're also not using any database here, either. Instead `app.js` includes a simple switch statement to read the GET params for `item`. 
+Flow: Implements the recommended Stripe workflow: calculating the order amount on the backend to prevent tampering, and confirming the payment on the frontend.
 
-To get started, clone the repository and run `npm install` to install dependencies:
+Installation: Run npm install in the project root to install the required dependencies 
 
-```
-git clone https://github.com/mattmitchell6/sa-takehome-project-node && cd sa-takehome-project-node
-npm install
-```
+Configuration: Before running, ensure you replace the placeholder API keys in app.js (Secret Key) and views/checkout.hbs (Publishable Key) with your own Stripe test credentials.
 
-Rename `sample.env` to `.env` and populate with your Stripe account's test API keys
-
-Then run the application locally:
-
-```
-npm start
-```
-
-Navigate to [http://localhost:3000](http://localhost:3000) to view the index page.
+How to Run: Start the application by running node app.js, then navigate to http://localhost:3000 in your browser to view the demo.
