@@ -94,9 +94,6 @@ app.get('/success', function(req, res) {
 /**
  * Start server
  */
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Getting served on port ${PORT}`);
+app.listen(3000, () => {
+  console.log('Getting served on port 3000');
 });
