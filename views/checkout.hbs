@@ -1,32 +1,85 @@
+<head>
+<script src="https://js.stripe.com/v3/"></script> 
+</head>
+
 <div class="row justify-content-md-center">
   <div class="col-6">
     <div class="text-center mt-40">
       <h1>
-        Checkout — Stripe Press
+        Checkout — Bookworm United
       </h1>
       <h5 class="text-secondary">
         {{title}}
       </h5>
       <hr class="mt-40">
       <div class="mt-20 text-info">
-        Total due: $<span class="amount" data-amount="{{amount}}"></span>
+        Total due: $<span class="amount" data-amount="{{amount}}">{{amount}}</span>
       </div>
     </div>
     <div class="card box-shadow mt-40">
       <div class="card-body">
-        <form name="payment-form">
+        <form id="payment-form" name="payment-form">
           <div>
             <label for="email">Email address</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="you@email.com">
           </div>
+           <!-- Display a payment form - checkout.html from https://docs.stripe.com/payments/quickstart -->
           <div class="mt-20 text-center text-secondary border-placeholder">
-            Add Stripe Element here!
+            <div id="payment-element"></div>
           </div>
+
           <div class="mt-20">
-            <button type="submit" class="btn btn-lg btn-block btn-primary">Pay $<span class="amount" data-amount="{{amount}}"></span></button>
+            <button type="submit" class="btn btn-lg btn-block btn-primary">
+              Pay $<span class="amount" data-amount="{{amount}}">{{amount}}</span>
+            </button>
           </div>
+          
+          <div id="error-message" style="color:red; margin-top:10px;"></div>
         </form>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+
+  // https://docs.stripe.com/payments/quickstart - checkout.js
+
+  const stripe = Stripe('pk_test_51SnYzvRcbl3Y2o46Q26NF3Ws6fokrdVN6ti2OWPxCWOhWOxoPrkDLqjUreM0Op9YYdlaV4SfIV1YVpWBBNP4bgCA004XDtpQxe'); 
+
+  async function initialize() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const itemId = urlParams.get('item');
+    
+    
+    const response = await fetch("/create-payment-intent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ itemId }),
+    });
+    const { clientSecret } = await response.json();
+
+   
+    const elements = stripe.elements({ clientSecret });
+    const paymentElement = elements.create("payment");
+    paymentElement.mount("#payment-element");
+
+    
+    const form = document.getElementById('payment-form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const { error } = await stripe.confirmPayment({
+        elements,
+        confirmParams: { 
+         // Make sure to change this to your payment completion page
+        return_url: "http://localhost:3000/success",
+        },
+      });
+
+      if (error) document.getElementById('error-message').innerText = error.message;
+    });
+  }
+
+  initialize();
+</script>

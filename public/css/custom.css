@@ -1,24 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
 body {
-  font-family: 'Roboto', sans-serif;
-  background: #f2f6fa;
+  font-family: 'Space Mono', monospace;
+  background: #f4f1ea;
+  color: #333;
 }
+
 h1, h2, h3, h4 {
-  font-weight: 300;
+  font-weight: 700;
+  text-transform: uppercase;
 }
+
 .box-shadow {
-  -webkit-box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
-  -moz-box-shadow:    0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
-  box-shadow:         0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+  border: 2px solid #333;
+  box-shadow: 6px 6px 0px #333;
+  background: #fff;
 }
+
+.btn-primary {
+  background-color: #e29578; 
+  border: 2px solid #333;
+  color: #fff;
+  box-shadow: 4px 4px 0px #333;
+}
+
+.btn-primary:hover {
+  background-color: #d08466;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #333;
+  color: #fff;
+}
+
 .mt-20 {
   margin-top: 20px;
 }
 .mt-40 {
   margin-top: 40px;
 }
+
 .border-placeholder {
   border-style: dashed;
-  border-width: 1px;
-  border-color: #ccc;
-  padding: 5px;
+  border-width: 2px;
+  border-color: #333;
+  padding: 15px;
+  background: #fff;
 }

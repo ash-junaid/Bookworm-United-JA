@@ -6,8 +6,23 @@
     </h1>
   </div>
   <div class="mt-40 text-center">
-    <div class="mt-20 text-center text-secondary border-placeholder">
+    <div id="details" class="mt-20 text-center text-secondary border-placeholder">
       Add details about the payment here!
     </div>
   </div>
 </main>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  const stripe = Stripe('pk_test_51SnYzvRcbl3Y2o46Q26NF3Ws6fokrdVN6ti2OWPxCWOhWOxoPrkDLqjUreM0Op9YYdlaV4SfIV1YVpWBBNP4bgCA004XDtpQxe');
+  const clientSecret = new URLSearchParams(window.location.search).get("payment_intent_client_secret");
+
+  if(clientSecret) {
+    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+      document.getElementById('details').innerHTML = `
+        Payment ID: ${paymentIntent.id} <br>
+        Amount: $${(paymentIntent.amount / 100).toFixed(2)}
+      `;
+    });
+  }
+</script>
