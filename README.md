@@ -5,7 +5,7 @@ This project showcases a demo app for Stripe Payments using Node.js. It focuses 
 ### Key Features & Setup
 
 * **Language:** Built on Node.js using the Express framework for the server.
-* **Flow:** Implements the recommended Stripe workflow: calculating the order amount on the backend to prevent tampering, and confirming the payment on the frontend.
+* **Flow:** Implements the recommended Stripe workflow: calculating the order amount and confirming the payment.
 
 ### Installation
 
