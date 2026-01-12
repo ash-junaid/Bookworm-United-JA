@@ -40,4 +40,4 @@ Start the application by running:
 node app.js
 ```
 
-Then navigate to `http://localhost:3000` in your browser to view the demo.
+Then navigate to `http://localhost:3000` in your browser to run the app.
